@@ -1,0 +1,214 @@
+:root{
+  --bg:#070b16;
+  --bg2:#0d1426;
+  --card:rgba(255,255,255,.045);
+  --card2:rgba(255,255,255,.07);
+  --line:rgba(255,255,255,.10);
+  --text:#e7eefc;
+  --dim:#93a7c9;
+  --dim2:#6f83a5;
+  --blue:#5aa9ff;
+  --gold:#ffcc66;
+  --red:#ff7a7a;
+  --grad1:linear-gradient(135deg,#1b2c52,#0d1426);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:
+    radial-gradient(1200px 700px at 18% -10%, #16244a 0%, transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, #203055 0%, transparent 55%),
+    var(--bg);
+  color:var(--text);
+  font:14px/1.6 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  overflow:hidden;
+}
+button,input,select{font-family:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+#app{display:flex;flex-direction:column;height:100vh}
+
+/* ---------- 顶栏 ---------- */
+#topbar{
+  display:flex;align-items:center;gap:18px;
+  padding:10px 18px;
+  background:linear-gradient(180deg,rgba(20,32,60,.85),rgba(10,16,30,.35));
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(8px);
+  flex:0 0 auto;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:230px}
+.brand h1{font-size:18px;font-weight:700;letter-spacing:.5px}
+.brand p{font-size:12px;color:var(--dim2)}
+.logo{
+  width:34px;height:34px;border-radius:50%;
+  background:radial-gradient(circle at 32% 30%,#fff3c4,#ffb43c 45%,#ff7a1a 75%,rgba(255,120,20,0) 100%);
+  box-shadow:0 0 18px rgba(255,180,80,.55);
+  flex:0 0 auto;
+}
+.viewBtns,.actions{display:flex;gap:8px;flex-wrap:wrap}
+#topbar button{
+  padding:7px 13px;border-radius:10px;font-size:13px;
+  background:var(--card);border:1px solid var(--line);
+  transition:background .25s,border-color .25s,transform .15s;
+}
+#topbar button:hover{background:var(--card2);border-color:rgba(255,255,255,.22)}
+#topbar button.on{background:linear-gradient(135deg,rgba(90,169,255,.32),rgba(90,169,255,.12));border-color:rgba(90,169,255,.55);color:#eaf4ff}
+#topbar button.primary{background:linear-gradient(135deg,#3f7de0,#2a5bb5);border-color:rgba(120,180,255,.5);font-weight:600}
+.actions{margin-left:auto}
+
+/* ---------- 主体 ---------- */
+main{
+  flex:1 1 auto;min-height:0;
+  display:grid;grid-template-columns:296px minmax(0,1fr) 320px;gap:12px;padding:12px;
+}
+.panel-col{overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:12px;padding-right:4px}
+.panel-col::-webkit-scrollbar{width:6px}
+.panel-col::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:3px}
+.card{
+  background:var(--grad1);
+  border:1px solid var(--line);
+  border-radius:14px;padding:14px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+.card h2{font-size:13px;color:#9dc0ee;font-weight:600;margin-bottom:10px;letter-spacing:.6px}
+.row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.row label{font-size:12px;color:var(--dim);width:38px;flex:0 0 auto}
+.mono{font-variant-numeric:tabular-nums;font-size:12px;color:var(--dim);min-width:52px;text-align:right}
+input[type=date]{
+  flex:1;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:13px;
+}
+input[type=range]{
+  flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(90,169,255,.7),rgba(90,169,255,.25));outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+  background:#dfeaff;border:2px solid #4a86d6;box-shadow:0 0 8px rgba(90,169,255,.6);cursor:pointer;
+}
+input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:#dfeaff;border:2px solid #4a86d6;cursor:pointer}
+select{background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:12px}
+.playRow{gap:10px}
+.play{min-width:72px;background:linear-gradient(135deg,#2f7de0,#1f5cb0)!important;border-color:rgba(120,180,255,.45)!important;font-weight:600}
+.play.on{background:linear-gradient(135deg,#e0603f,#b8402a)!important;border-color:rgba(255,160,130,.5)!important}
+.quickBtns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
+.quickBtns.ecl{grid-template-columns:1fr 1fr}
+.quickBtns button{
+  padding:7px 6px;border-radius:9px;font-size:12px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  transition:background .2s,transform .12s;
+}
+.quickBtns button:hover{background:rgba(255,255,255,.11)}
+.quickBtns button:active{transform:scale(.97)}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;font-size:12px;color:var(--dim)}
+.checks label{display:flex;align-items:center;gap:5px;cursor:pointer}
+.checks input{accent-color:#5aa9ff}
+.hint{font-size:11.5px;color:var(--dim2);margin-top:8px;line-height:1.5}
+.tip-card ul{padding-left:16px;font-size:12px;color:var(--dim);line-height:1.75}
+.tip-card strong{color:#cfe2ff}
+
+/* ---------- 舞台 ---------- */
+#stage{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);
+  background:radial-gradient(700px 500px at 50% 40%,#0e1830,#05080f);min-height:0}
+#gl{width:100%;height:100%;display:block}
+
+/* WebGL 不可用时的二维备用视图 */
+#flat{position:absolute;inset:0;width:100%;height:100%;display:block}
+#glNotice{
+  position:absolute;left:50%;top:14px;transform:translateX(-50%);
+  z-index:4;display:flex;align-items:flex-start;gap:10px;max-width:min(560px,calc(100% - 28px));
+  background:rgba(38,24,14,.78);border:1px solid rgba(255,180,90,.32);border-radius:14px;
+  padding:10px 12px;backdrop-filter:blur(8px);
+  font-size:12px;line-height:1.55;color:#f0d8bb;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+#glNotice .glIco{
+  flex:0 0 auto;width:20px;height:20px;border-radius:50%;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,180,90,.18);border:1px solid rgba(255,180,90,.5);
+  color:#ffcf8a;font-weight:700;font-size:13px;
+}
+#glNotice .glTxt{flex:1 1 auto;min-width:0}
+#glNotice b{color:#ffcf8a;font-weight:700}
+#glNotice em{display:block;margin-top:4px;font-style:normal;color:#b9c7dd;font-size:11.5px}
+#glNotice .glBtn{
+  flex:0 0 auto;padding:4px 10px;border-radius:9px;font-size:11.5px;
+  color:#ffdda6;background:rgba(255,190,110,.14);
+  border:1px solid rgba(255,190,110,.42);transition:background .2s,border-color .2s;
+}
+#glNotice .glBtn:hover{background:rgba(255,190,110,.24);border-color:rgba(255,190,110,.7)}
+
+.labels{position:absolute;inset:0;pointer-events:none}
+.lbl{
+  position:absolute;transform:translate(-50%,-50%);
+  font-size:12px;padding:2px 8px;border-radius:8px;white-space:nowrap;
+  background:rgba(6,10,20,.55);border:1px solid rgba(255,255,255,.14);
+  color:#dfeaff;backdrop-filter:blur(3px);
+}
+#skyPanel{
+  position:absolute;left:14px;bottom:14px;width:190px;
+  background:rgba(8,13,26,.62);border:1px solid var(--line);border-radius:14px;padding:8px;
+  backdrop-filter:blur(6px);
+}
+#sky{width:174px;height:174px;display:block;margin:0 auto;border-radius:50%}
+.skyCap{text-align:center;font-size:11.5px;color:#a9c0e6;margin-top:5px}
+.skyInfo{text-align:center;font-size:11px;color:var(--dim2);margin-top:2px;line-height:1.45}
+#scaleNote{
+  position:absolute;right:14px;bottom:14px;max-width:330px;
+  font-size:11px;color:#8095b8;background:rgba(8,13,26,.55);
+  border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:7px 10px;line-height:1.5;
+  backdrop-filter:blur(4px);
+}
+#dragHint{
+  position:absolute;left:50%;top:14px;transform:translateX(-50%);
+  font-size:12px;color:#b9cdf0;background:rgba(8,13,26,.55);
+  border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:5px 14px;
+  backdrop-filter:blur(4px);transition:opacity .6s;
+}
+#dragHint.hide{opacity:0}
+
+/* ---------- 右侧读数 ---------- */
+#moonCv{width:100%;max-width:212px;height:auto;display:block;aspect-ratio:1;margin:0 auto 2px}
+#sunCv{width:124px;height:124px;display:block;margin:0 auto}
+.phaseName{text-align:center;font-size:20px;font-weight:700;color:#ffe9a8;margin:2px 0 8px}
+.illumBar{height:6px;border-radius:3px;background:rgba(255,255,255,.10);overflow:hidden;margin-bottom:8px}
+.illumBar i{display:block;height:100%;width:0;border-radius:3px;
+  background:linear-gradient(90deg,#7c8ea8,#ffd98a);transition:width .3s}
+.kv{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;padding:3px 0;
+  border-bottom:1px dashed rgba(255,255,255,.07)}
+.kv span{color:var(--dim)}
+.kv b{font-weight:600;font-variant-numeric:tabular-nums;color:#eaf2ff}
+.lunarBig{font-size:17px;font-weight:700;text-align:center;color:#ffe0b0;margin-bottom:8px}
+.sunState{text-align:center;font-size:14px;font-weight:600;color:#ffd98a;margin:6px 0 8px}
+.know-card p{font-size:12.5px;color:#c7d8f2;line-height:1.8}
+.ecl-alert{color:var(--red)!important;font-weight:700}
+
+/* ---------- 弹窗 ---------- */
+.modal{position:fixed;inset:0;background:rgba(3,6,14,.72);display:flex;align-items:center;justify-content:center;z-index:50;
+  backdrop-filter:blur(4px);transition:opacity .25s}
+.modal.hide{opacity:0;pointer-events:none}
+.modalBox{
+  width:min(640px,90vw);max-height:84vh;overflow:auto;
+  background:linear-gradient(160deg,#16223f,#0b1120);
+  border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 26px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.modalBox h2{font-size:19px;margin-bottom:12px}
+.modalBox h3{font-size:14px;margin:16px 0 8px;color:#9dc0ee}
+.modalBox p,.modalBox li{font-size:13px;color:#c2d4ef;line-height:1.85}
+.modalBox ul{padding-left:18px}
+.modalBox button{margin-top:20px;padding:9px 20px;border-radius:11px;background:linear-gradient(135deg,#3f7de0,#2a5bb5);font-weight:600}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:1180px){
+  main{grid-template-columns:250px minmax(0,1fr) 270px}
+  #scaleNote{max-width:250px;font-size:10.5px}
+}
+@media (max-width:960px){
+  body{overflow:auto}
+  #app{height:auto}
+  main{grid-template-columns:1fr;height:auto}
+  #stage{height:56vh;min-height:380px}
+  .panel-col{overflow:visible}
+  #skyPanel{width:150px}
+  #sky{width:134px;height:134px}
+}
